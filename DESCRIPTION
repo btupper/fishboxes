@@ -1,0 +1,13 @@
+Package: fishboxes
+Maintainer: Ben Tupper <btupper@bigelow.org>
+Author: Lifei Wanfg <lwang@gmri.org>, Ben Tupper <btupper@bigelow.org>
+URL: https://github.com/btupper/fishboxes
+Version: 0.1
+License: GPL (>= 2)
+Title: fishboxes 
+Description: Tools for working with [NMFS](http://nefsc.noaa.gov/) 'fish boxes' such as Ten Minute Squares
+Depends:
+    R (>= 3.0)
+Imports:
+    methods,
+    sp

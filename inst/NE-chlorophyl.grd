@@ -1,0 +1,26 @@
+[general]
+creator=R package 'raster'
+created=2015-11-11 19:10:26
+[georeference]
+nrows=238
+ncols=260
+xmin=-77.2708282470703
+ymin=34.5625
+xmax=-66.4791641235352
+ymax=44.4375
+projection=+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0
+[data]
+datatype=FLT8S
+byteorder=little
+nbands=1
+bandorder=BIL
+categorical=FALSE
+minvalue=-1.1799299885181
+maxvalue=1.86730086856069
+nodatavalue=-1.7e+308
+[legend]
+legendtype=
+values=
+color=
+[description]
+layername=chlor_a
