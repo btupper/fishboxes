@@ -40,7 +40,13 @@ P
 # max values  : 42693  
 ```
 
+These polygons can be saved as ESRI shapefiles using the [rgdal](https://cran.r-project.org/web/packages/rgdal/index.html) package.
 
+```r
+NMFS_QDS <- decode_polygons(x = out)
+library(rgdal)
+rgdal::writeOGR(NMFS_QDS, "NMFS_QDS", layer="NMFS_QDS", driver="ESRI Shapefile")
+```
 
 The `show_fishboxes()` function shows how to produce a completed set of nested squares.
 
