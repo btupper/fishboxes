@@ -76,7 +76,7 @@ sp::spplot(r) +
 
 ![raster](https://github.com/btupper/fishboxes/blob/master/inst/NE-chlorophyl.png)
 
-Now we can make a One Degree Square and it's 4 Quarter Degree Squares.  We'll find the sum of the raster pixels within each and compare them.  If all goes well, the sum of the 4 quarters will exactly equal the sum across the entore One Degree Square.
+Now we can make a One Degree Square and its 4 Quarter Degree Squares.  We'll find the sum of the raster pixels within each and compare them.  If all goes well, the sum of the 4 quarters will exactly equal the sum across the entore One Degree Square.
 
 ```
 # make a One Degree Square
