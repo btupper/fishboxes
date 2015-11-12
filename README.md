@@ -24,17 +24,20 @@ install_github('btupper/fishboxes')
 Here is a simple example that generates two Quarter Degree Squares within the 42N, 69W One Degree Box.  These are the lower left and upper right QDS.
 
 ```r
+library(sp)
+library(raster)
 library(fishboxes)
+
 P <- decode_polygons(x = c(42692, 42693))
 P
 # class       : SpatialPolygonsDataFrame 
-# features    : 1 
-# extent      : -69.5, -69, 42.5, 43  (xmin, xmax, ymin, ymax)
+# features    : 2 
+# extent      : -70, -69, 42, 43  (xmin, xmax, ymin, ymax)
 # coord. ref. : +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0 
 # variables   : 1
 # names       :    ID 
-# min values  : 42693 
-# max values  : 42693 
+# min values  : 42692 
+# max values  : 42693  
 ```
 
 
@@ -61,14 +64,14 @@ library(latticeExtra)
 # MODISA L3SMI daily monthly data selected at random.
    
 filename <- system.file("NE-chlorophyl.grd", package = 'fishboxes')
-r <- log10(brick(filename))
+r <- log10(raster::brick(filename))
 
 # get a set of polygons (there are 6 - two pairs of three nested boxes)
 P <- decode_polygons(x=c(426916, 42692, 4269, 387066, 38701, 3870))
 
 # show them
-spplot(r) +
-   spplot(P, colorkey = FALSE, border = 'black', col.regions = NA)
+sp::spplot(r) +
+   sp::spplot(P, colorkey = FALSE, border = 'black', col.regions = NA)
 ```
 
 ![raster](https://github.com/btupper/fishboxes/blob/master/inst/NE-chlorophyl.png)
@@ -83,8 +86,8 @@ P <- decode_polygons(x = 4269)
 P4 <- lapply(paste0('4269', 1:4), decode_polygons)
 
 # get the raster mean from each
-S <- extract(r, P, fun = sum, na.rm = TRUE)
-S4 <- sapply(P4, function(x) extract(r, x, fun = sum, na.rm = TRUE))
+S <- raster::extract(r, P, fun = sum, na.rm = TRUE)
+S4 <- sapply(P4, function(x) raster::extract(r, x, fun = sum, na.rm = TRUE))
 
 # these is no difference! (S is a matrix, we need the first element at [1,1])
 identical(S[1,1], sum(S4))

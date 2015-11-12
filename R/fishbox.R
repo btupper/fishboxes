@@ -5,7 +5,7 @@
 #' @export
 #' @param x one 4 digit code
 show_fishboxes <- function(x = 4269){
-
+   
    opar <- par(no.readonly = TRUE)
    on.exit(par(opar))
    
@@ -26,10 +26,10 @@ show_fishboxes <- function(x = 4269){
    c36names <- substring(rownames(C36@data), 5,6)
    
    par(las = 2, mar = c(4,4,1,1))
-   plot(P1, axes = TRUE, asp = 1)
+   sp::plot(P1, axes = TRUE, asp = 1)
    lines(P4, col = 'red', lwd=3)
    lines(P36, col = 'blue', lty = 'dashed')
-   text(coordinates(C36), c36names, cex = 0.7, col = 'blue')
+   text(sp::coordinates(C36), c36names, cex = 0.7, col = 'blue')
    
 }
 
@@ -45,7 +45,7 @@ show_fishboxes <- function(x = 4269){
 #' @param ... further arguments for \code{decode_id}
 #' @return  sp::SpatialPolygons or sp::SpatialPolygonsDataFrame class object
 decode_polygons <- function(x = c(426916, 42692, 4269, 387066, 38701, 3870), 
-   crs = CRS("+proj=longlat +datum=WGS84"), asDataFrame = TRUE, ...){
+   crs = sp::CRS("+proj=longlat +datum=WGS84"), asDataFrame = TRUE, ...){
    xx <- decode_id(x, form = 'bounds', closed = TRUE)
    xx <- lapply(names(xx), function(id) sp::Polygons(list(sp::Polygon(xx[[id]])), id) )
    P <- sp::SpatialPolygons(xx, 1:length(xx), proj4string = crs)

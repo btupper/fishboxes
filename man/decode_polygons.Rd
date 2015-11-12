@@ -6,7 +6,7 @@
 define One Degree, Quarter Degree or Ten Minute Squares (ODS, QDS, TMS).}
 \usage{
 decode_polygons(x = c(426916, 42692, 4269, 387066, 38701, 3870),
-  crs = CRS("+proj=longlat +datum=WGS84"), asDataFrame = TRUE, ...)
+  crs = sp::CRS("+proj=longlat +datum=WGS84"), asDataFrame = TRUE, ...)
 }
 \arguments{
 \item{x}{one or more numeric or character 4, 5 or 6 digit codes}
