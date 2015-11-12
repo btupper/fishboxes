@@ -61,7 +61,7 @@ library(latticeExtra)
 # MODISA L3SMI daily monthly data selected at random.
    
 filename <- system.file("NE-chlorophyl.grd", package = 'fishboxes')
-r <- brick(filename)
+r <- log10(brick(filename))
 
 # get a set of polygons (there are 6 - two pairs of three nested boxes)
 P <- decode_polygons(x=c(426916, 42692, 4269, 387066, 38701, 3870))
