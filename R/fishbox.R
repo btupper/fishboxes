@@ -27,8 +27,8 @@ show_fishboxes <- function(x = 4269){
    
    par(las = 2, mar = c(4,4,1,1))
    sp::plot(P1, axes = TRUE, asp = 1)
-   lines(P4, col = 'red', lwd=3)
-   lines(P36, col = 'blue', lty = 'dashed')
+   plot(P4, add = TRUE, col = 'red', lwd=3)
+   plot(P36, add = TRUE, col = 'blue', lty = 'dashed')
    text(sp::coordinates(C36), c36names, cex = 0.7, col = 'blue')
    
 }
