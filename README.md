@@ -1,7 +1,7 @@
 # fishboxes
-R tools for working with NMFS One Degree, Quarter Degree and Ten Minute Squares (ODS, QDS, and TMS) 
+R tools for working with [NMFS-NEFSC](http://www.nefsc.noaa.gov/publications/series/whlrd/whlrd7719.pdf) One Degree, Quarter Degree and Ten Minute Squares (ODS, QDS, and TMS).  Functions for downloading publically available shape files are alos provided.
 
-NMFS assigns fish reports to a grid system as shown below.
+NMFS-NEFSC assigns fish reports to a grid system as shown below.
 
 ![NMFS Map](https://github.com/btupper/fishboxes/blob/master/inst/tenminutesquares_numbering.png)
 
@@ -19,7 +19,7 @@ library(devtools)
 install_github('btupper/fishboxes')
 ```
 
-#### Usage
+#### Usage - One Degree Squares (ODS), Quarter Degrees Squares (QDS) and Ten Minute Squares (TMS)
 
 Here is a simple example that generates two Quarter Degree Squares within the 42N, 69W One Degree Box.  These are the lower left and upper right QDS.
 
@@ -100,5 +100,20 @@ identical(S[1,1], sum(S4))
 # [1] TRUE
 ```
 
+#### Usage - downloading public data sets
 
+[NMFS-NEFSC](ftp://ftp.nefsc.noaa.gov/pub/gis/) serves various data sets as ESRI Shape Files.  This package provides one function for downloading these for subsequent reading into R using the `rgdal` package.
 
+```r
+ok <- download_nefsc_gis("EcoMon_Strata", dest = "/Users/ben/Downloads/EcoMon_Strata")
+# ok
+#    EcoMon_Strata.dbf     EcoMon_Strata.prj     EcoMon_Strata.sbn     EcoMon_Strata.sbx     EcoMon_Strata.shp EcoMon_Strata.shp.xml 
+#                 TRUE                  TRUE                  TRUE                  TRUE                  TRUE                  TRUE 
+#    EcoMon_Strata.shx 
+#                 TRUE 
+library(rgdal)
+P <- readOGR("/Users/ben/Downloads/EcoMon_Strata", "EcoMon_Strata")
+plot(P)
+z <- getSpatialPolygonsLabelPoints(P)
+text(z, 1:47)
+```

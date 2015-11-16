@@ -24,7 +24,7 @@ download_nefsc_gis <- function(what = 'Statistical_Areas',
    wh <- allowed[thisone]
    
    if (!file.exists(dest[1])){
-      stopifnot(!dir.create(dest[1], recursive = TRUE))
+      stopifnot(dir.create(dest[1], recursive = TRUE))
    }
    
    ff <- paste(wh, exts, sep = ".") 
